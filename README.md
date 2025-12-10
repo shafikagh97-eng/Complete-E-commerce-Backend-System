@@ -36,16 +36,23 @@ Node.js with Express.js framework
 Create a .env file in the root directory and add the following variables:
 
 MONGO_URL=mongodb+srv://shafikagh97_db_user:dda3vIgit5ttwrEE@e-commerce.9k0hpqa.mongodb.net/?appName=E-commerce
+
 PORT=3000
+
 SECRET_ACCESS_TOKEN_KEY="nB8xR2qL9pZ3mK6vT1sF7gH4jD5cW8yA2"
+
 SECRET_REFRESH_TOKEN_KEY="X5tL9mR3pK8vB2sN6cJ4hG7fD1zQ9wE5"
 
 ADMIN_EMAIL="admin@gmail.com"
+
 ADMIN_PASS="admin12345@SUPER"
+
 ADMIN_NAME="root"
 
 CLOUD_NAME="dsynk5uka"
+
 API_KEY_CLOUD='624211657916669'
+
 API_SECRET_CLOUD='zGHw3E_9x6RarwNaFlZ37_YmmX8'
 
 5. Start the Server
@@ -68,6 +75,7 @@ http://localhost:3000
 
 Configure the environment variables (base URL, etc.)
 
+```
 Folder Structure :
 ├── src/
 │ ├── models/
@@ -128,3 +136,4 @@ Folder Structure :
 ├── .env.example
 ├── .gitignore
 └── README.md
+```
