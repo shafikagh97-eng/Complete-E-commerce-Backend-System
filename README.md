@@ -75,8 +75,10 @@ http://localhost:3000
 
 Configure the environment variables (base URL, etc.)
 
+## Folder Structure :
+
 ```
-Folder Structure :
+
 ├── src/
 │ ├── models/
 │ │ ├── User.js
