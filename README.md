@@ -69,7 +69,7 @@ Once running, the server will be available at:
 
 http://localhost:3000
 
-6.  Test the API
+7.  Test the API
     Use Postman to test endpoints, or run the included collection:
     [visit] (https://documenter.getpostman.com/view/49214327/2sB3dQwpyC)
 
