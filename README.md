@@ -71,8 +71,12 @@ http://localhost:3000
 
 7.  Test the API
     Use Postman to test endpoints, or run the included collection:
+    
     [visit] (https://documenter.getpostman.com/view/49214327/2sB3dQwpyC)
-8. deployed to Render.com on domain :
+    
+9. deployed to Render.com on domain :
+
+    
     [visit] (https://complete-e-commerce-backend-system.onrender.com)
 Configure the environment variables (base URL, etc.)
 
