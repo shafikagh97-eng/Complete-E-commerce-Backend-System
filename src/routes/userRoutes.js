@@ -21,14 +21,5 @@ router.put(
   [requireAuth],
   asyncHandler(UserController.updateShippingAdress)
 );
-router.get(
-  "/admin/all",
-  [requireAuth, authorize("admin")],
-  UserController.getAllUsers
-);
-router.put(
-  "/:id/role",
-  [requireAuth, authorize("admin")],
-  UserController.updateUserRole
-);
+
 module.exports = router;

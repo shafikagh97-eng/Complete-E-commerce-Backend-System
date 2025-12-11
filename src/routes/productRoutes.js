@@ -16,17 +16,7 @@ router.get(
   [requireAuth],
   asyncHandler(productController.getCategories)
 );
-router.post(
-  "/",
-  [
-    requireAuth,
-    authorize("admin"),
-    multer().array("images", 10),
-    ...createProductValidation,
-    validate,
-  ],
-  asyncHandler(ProductController.addProduct)
-);
+
 router.get(
   "/:id",
   [requireAuth],
@@ -36,23 +26,6 @@ router.post(
   "/:id/reviews",
   [requireAuth, multer().array("images", 5)],
   asyncHandler(productController.addReview)
-);
-
-router.put(
-  "/:id",
-  [
-    requireAuth,
-    authorize("admin"),
-    multer().array("images", 10),
-    ...updateProductValidation,
-    validate,
-  ],
-  asyncHandler(ProductController.updateProduct)
-);
-router.delete(
-  "/:id",
-  [requireAuth, authorize("admin")],
-  asyncHandler(ProductController.deleteProduct)
 );
 
 router.post(

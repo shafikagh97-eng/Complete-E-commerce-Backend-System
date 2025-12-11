@@ -16,14 +16,5 @@ router.post(
 );
 router.get("/", [requireAuth], asyncHandler(orderController.getUserOrders));
 router.get("/:id", [requireAuth], asyncHandler(orderController.getOrderByid));
-router.get(
-  "/admin/all",
-  [requireAuth, authorize("admin")],
-  asyncHandler(orderController.getAllOrders)
-);
-router.put(
-  "/:id/status",
-  [requireAuth, authorize("admin"), ...updateOrderStatusValidation, validate],
-  asyncHandler(orderController.updateStatus)
-);
+
 module.exports = router;
