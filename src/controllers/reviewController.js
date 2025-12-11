@@ -27,15 +27,8 @@ class ReviewController {
     if (req.body.comment) review.comment = req.body.comment;
 
     //add new images or save the old one
-
-    if (req.files && req.files.length > 0) {
-      let newImages = [];
-      for (let file of req.files) {
-        const imgUrl = await UploadsController.uploadCloudByCloudinary({
-          file,
-        });
-        if (imgUrl) newImages.push(imgUrl);
-      }
+    let newImages = req.cloudImages || [];
+    if (newImages.length > 0) {
       review.images = newImages;
     }
 

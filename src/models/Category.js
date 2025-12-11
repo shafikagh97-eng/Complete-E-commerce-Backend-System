@@ -11,9 +11,11 @@ const categorySchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-    image: {
-      type: String,
-    },
+    images: [
+      {
+        type: String,
+      },
+    ],
     parentCategory: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",

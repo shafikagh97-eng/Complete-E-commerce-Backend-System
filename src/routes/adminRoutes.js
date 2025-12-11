@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const { authorize, requireAuth } = require("../middlewares/authMiddleware");
+const uploadCloud = require("../middlewares/uploadMiddleware");
 const validate = require("../middlewares/validationMiddleware");
 const asyncHandler = require("../utils/asyncHandler");
 const AdminController = require("../controllers/adminController");
@@ -15,7 +16,7 @@ const {
 //category
 router.post(
   "/category",
-  [requireAuth, authorize("admin"), multer().array("images", 10)],
+  [requireAuth, authorize("admin"), multer().array("images", 10), uploadCloud],
   asyncHandler(AdminController.addCategory)
 );
 //order
@@ -37,6 +38,7 @@ router.post(
     requireAuth,
     authorize("admin"),
     multer().array("images", 10),
+    uploadCloud,
     ...createProductValidation,
     validate,
   ],
@@ -49,6 +51,7 @@ router.put(
     requireAuth,
     authorize("admin"),
     multer().array("images", 10),
+    uploadCloud,
     ...updateProductValidation,
     validate,
   ],

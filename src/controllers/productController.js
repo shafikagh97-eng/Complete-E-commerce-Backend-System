@@ -37,16 +37,7 @@ class ProductController {
     }
 
     //upload images
-    let images = [];
-    //save images path
-    if (req.files && req.files.length > 0) {
-      for (let file of req.files) {
-        const imageUrl = await UploadsController.uploadCloudByCloudinary({
-          file,
-        });
-        images.push(imageUrl);
-      }
-    }
+    let images = req.cloudImages || [];
 
     const newReview = await Review.create({
       user: req.user.id,

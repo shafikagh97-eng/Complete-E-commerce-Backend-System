@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const multer = require("multer");
 const { authorize, requireAuth } = require("../middlewares/authMiddleware");
 const UserController = require("../controllers/userController");
 const asyncHandler = require("../utils/asyncHandler");

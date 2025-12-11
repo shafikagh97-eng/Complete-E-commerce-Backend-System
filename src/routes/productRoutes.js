@@ -1,15 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const { authorize, requireAuth } = require("../middlewares/authMiddleware");
+const { requireAuth } = require("../middlewares/authMiddleware");
 const asyncHandler = require("../utils/asyncHandler");
 const ProductController = require("../controllers/productController");
 const productController = require("../controllers/productController");
-const {
-  createProductValidation,
-  updateProductValidation,
-} = require("../validation/productValidation");
-const validate = require("../middlewares/validationMiddleware");
+const uploadCloud = require("../middlewares/uploadMiddleware");
 router.get("/", [requireAuth], asyncHandler(ProductController.getAllProduct));
 router.get(
   "/categories",
@@ -24,15 +20,10 @@ router.get(
 );
 router.post(
   "/:id/reviews",
-  [requireAuth, multer().array("images", 5)],
+  [requireAuth, multer().array("images", 5), uploadCloud],
   asyncHandler(productController.addReview)
 );
 
-router.post(
-  "/:id/reviews",
-  [requireAuth, multer().array("images", 5)],
-  asyncHandler(productController.addReview)
-);
 router.get(
   "/:id/reviews",
   [requireAuth],

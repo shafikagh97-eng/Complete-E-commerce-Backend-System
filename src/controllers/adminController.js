@@ -6,12 +6,12 @@ const UploadsController = require("../controllers/uploadsController");
 
 class AdminController {
   async addCategory(req, res) {
-    const { name, description, image, parentCategory } = req.body;
-
+    const { name, description, parentCategory } = req.body;
+    const images = req.cloudImages || [];
     const category = await Category.create({
       name,
       description,
-      image,
+      images,
       parentCategory: parentCategory || null,
     });
 
@@ -97,16 +97,7 @@ class AdminController {
       brand,
     } = req.body;
     //upload images
-    let images = [];
-    //save images path
-    if (req.files && req.files.length > 0) {
-      for (let file of req.files) {
-        const imageUrl = await UploadsController.uploadCloudByCloudinary({
-          file,
-        });
-        images.push(imageUrl);
-      }
-    }
+    const images = req.cloudImages || [];
     const product = await Product.create({
       name,
       description,
@@ -148,14 +139,9 @@ class AdminController {
       brand,
     } = req.body;
     let images = product.images;
-    if (req.files && req.files.length > 0) {
-      images = [];
-      for (let file of req.files) {
-        const imageUrl = await uploadToCloudinary(file);
-        if (imageUrl) {
-          images.push(imageUrl);
-        }
-      }
+    //update images or keep old one
+    if (req.cloudImages.length > 0) {
+      images = req.cloudImages;
     }
     if (name !== undefined) {
       product.name = name;
